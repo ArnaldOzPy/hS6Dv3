@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+8<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -578,10 +578,118 @@
                     
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-label"><i class="fas fa-weight-hanging"></i> Tamaño original</div>
-                            <div class="stat-value" id="originalSize">-</div>
+                            <div class="stat-label"><i class="fas fa-weight-hanging"></i>Tamaño comprimido</div>
+                            <div class="stat-value" id="compressedSize">-</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label"><i class="fas fa-file-export"></i> Tamaño comprimido</div>
-                            <div class="stat-value" id="compressedSize">-</div>
-      
+                            <div class="stat-label"><i class="fas fa-percentage"></i> Ratio de compresión</div>
+                            <div class="stat-value" id="compressionRatio">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-stopwatch"></i> Tiempo total</div>
+                            <div class="stat-value" id="compressTime">-</div>
+                        </div>
+                    </div>
+                    
+                    <a id="downloadCompressed" class="download-link"><i class="fas fa-download"></i> Descargar archivo comprimido (.hs6d)</a>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-expand-arrows-alt"></i> Descomprimir Archivo</h3>
+                    <input type="file" id="decompressInput" accept=".hs6d">
+                    <button id="decompressBtn"><i class="fas fa-cog"></i> Descomprimir Archivo</button>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="decompressProgress"></div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-weight-hanging"></i> Tamaño comprimido</div>
+                            <div class="stat-value" id="inputCompressedSize">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-file-import"></i> Tamaño descomprimido</div>
+                            <div class="stat-value" id="decompressedSize">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-tachometer-alt"></i> Velocidad</div>
+                            <div class="stat-value" id="decompressRate">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-stopwatch"></i> Tiempo total</div>
+                            <div class="stat-value" id="decompressTime">-</div>
+                        </div>
+                    </div>
+                    
+                    <a id="downloadDecompressed" class="download-link"><i class="fas fa-download"></i> Descargar archivo original</a>
+                </div>
+            </div>
+            
+            <div style="background: rgba(40, 80, 40, 0.6); padding: 15px; border-radius: 10px; margin-top: 25px; border-left: 4px solid var(--secondary);">
+                <p style="color: #d4d4aa; font-size: 1rem;">
+                    <strong>📌 Recomendado para el agro:</strong> Comprime tus archivos CSV de reportes de producción, datos de cultivos y registros de ganado. 
+                    Evita comprimir imágenes/videos ya optimizados (JPG, MP4) ya que no reducirán su tamaño.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Testimonios -->
+        <div class="section">
+            <h2><i class="fas fa-comments"></i> Testimonios del Sector</h2>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Con HyperStorage6D optimizamos el envío de nuestros reportes diarios de producción de soja. Lo que antes no podíamos enviar por WhatsApp ahora se comprime en segundos."
+                    </p>
+                    <div class="testimonial-author">
+                        <i class="fas fa-user"></i> Carlos Giménez, Ministro de Agricultura y Ganadería
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Herramienta esencial para nuestras cooperativas. La compresión de datos de producción nos permite operar eficientemente incluso en zonas con conectividad limitada."
+                    </p>
+                    <div class="testimonial-author">
+                        <i class="fas fa-user"></i> Amanda León, Presidenta del Crédito Agrícola de Habilitación (CAH)
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "La integración con nuestros sistemas de agricultura digital ha sido fundamental para optimizar la transmisión de datos desde el campo hasta nuestra central."
+                    </p>
+                    <div class="testimonial-author">
+                        <i class="fas fa-user"></i> Devanir Ribeiro, Gerente de Marketing de Agrofértil
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://informaticabigbosspy.blogspot.com/p/principal.html" class="footer-link">
+                    <i class="fas fa-globe"></i> BIG BOSS Informática
+                </a>
+                <a href="https://www.afd.gov.py" class="footer-link">
+                    <i class="fas fa-university"></i> Financiamiento AFD
+                </a>
+                <a href="https://innovar.com.py" class="footer-link">
+                    <i class="fas fa-calendar-alt"></i> Innovar 2025
+                </a>
+                <a href="https://www.fao.org/paraguay" class="footer-link">
+                    <i class="fas fa-handshake"></i> Iniciativa Mano de la Mano
+                </a>
+            </div>
+            
+            <p>Copyright © 2025 | HyperStorage6D V3 - Solución especializada para el agro paraguayo | Todos los Derechos reservados</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">Optimizado para dispositivos móviles y el sector agroindustrial - Paraguay 2025</p>
+        </footer>
+    </div>
+
+    <script type="module" src="index-main.js"></script>
+</body>
+</html>
