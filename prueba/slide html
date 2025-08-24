@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumEdge Co-Processor (QECP) - Infografía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #665191, #f95d6a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #f95d6a;
+            border: 3px solid #003f5c;
+        }
+        .timeline-line {
+            position: absolute;
+            left: -21px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #003f5c;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- 
+    Infographic Narrative Plan:
+    1. Header: Introduce QECP and its mission.
+    2. The Problem: Highlight the IoT energy crisis with a powerful statistic.
+    3. The Solution: Present QECP as the definitive answer.
+    4. Market Opportunity: Visualize the explosive growth of the IoT market.
+    5. Competitive Edge: Directly compare QECP against existing solutions.
+    6. Business & Roadmap: Detail the monetization strategy and path to market.
+    7. The Investment: Clearly state the funding need and its allocation.
+    8. Footer: Call to action and contact information.
+
+    Visualization Choices:
+    - Data: IoT energy maintenance cost (60%). Goal: Inform. Visualization: Donut Chart. Justification: Clearly shows a significant part-to-whole relationship. Library: Chart.js (Canvas). NO SVG.
+    - Data: IoT market growth projections. Goal: Change. Visualization: Line Chart. Justification: Best method to display trends over time. Library: Chart.js (Canvas). NO SVG.
+    - Data: QECP vs. Cortex-M0+ comparison. Goal: Compare. Visualization: Bar Chart. Justification: Provides a direct, easy-to-understand comparison of key performance metrics. Library: Chart.js (Canvas). NO SVG.
+    - Data: Roadmap phases. Goal: Organize. Visualization: Timeline. Justification: Intuitively displays chronological milestones. Method: Structured HTML/CSS with Tailwind. NO SVG, NO MERMAID JS.
+    - Data: Seed investment breakdown. Goal: Inform. Visualization: Donut Chart. Justification: Effectively shows the allocation of funds. Library: Chart.js (Canvas). NO SVG.
+    - Data: QECP Architecture. Goal: Organize. Visualization: Diagram. Justification: Simplifies complex technical concepts. Method: Structured HTML/CSS with Tailwind. NO SVG, NO MERMAID JS.
+
+    Color Palette: Brilliant Blues (#003f5c, #2f4b7c, #665191, #a05195, #d45087, #f95d6a, #ff7c43, #ffa600).
+
+    Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All visualizations are rendered using Chart.js on HTML Canvas elements or are constructed with structured HTML and styled with Tailwind CSS.
+    -->
+
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-[#003f5c]">QuantumEdge (QECP)</h1>
+            <a href="#contact" class="bg-[#f95d6a] text-white font-bold py-2 px-4 rounded-full hover:bg-[#d45087] transition-colors">Contáctanos</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="intro" class="text-center py-16">
+            <h2 class="text-5xl md:text-7xl font-black mb-4">
+                <span class="gradient-text">Revolucionando</span> la Eficiencia Energética en IoT
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+                Presentamos el Co-Procesador QuantumEdge (QECP): Habilitando un futuro de IoT sostenible con computación de ultra-baja potencia.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">El Problema: La Crisis Energética Silenciosa del IoT</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">Los dispositivos IoT están en todas partes, pero su dependencia de baterías limitadas crea un enorme cuello de botella operativo y financiero. El mantenimiento energético no es solo un inconveniente, es el mayor costo oculto de la industria.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="chart-container w-full max-w-sm h-64 md:h-80">
+                        <canvas id="problemChart"></canvas>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <p class="text-7xl md:text-8xl font-black text-[#d45087]">60%</p>
+                        <p class="text-2xl font-bold text-gray-700">del costo total de propiedad de un dispositivo IoT se debe al mantenimiento energético.</p>
+                        <p class="text-sm text-gray-500 mt-2">(Fuente: McKinsey)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">La Solución: QuantumEdge Co-Processor (QECP)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-5xl font-bold text-[#665191]">30%</p>
+                        <p class="font-semibold mt-2">Reducción del consumo energético, extendiendo la vida de la batería de meses a años.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-5xl font-bold text-[#a05195]">1024</p>
+                        <p class="font-semibold mt-2">Operaciones simultáneas gracias a nuestra arquitectura de matriz 2D de 1-BIT.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-5xl font-bold text-[#d45087]">Ultra-Low</p>
+                        <p class="font-semibold mt-2">Potencia para tareas simples, liberando al procesador principal y ahorrando energía.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">Una Oportunidad de Mercado Explosiva</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">El universo del IoT se está expandiendo a un ritmo sin precedentes. QECP está posicionado para capturar una porción significativa del segmento de más rápido crecimiento: los dispositivos de baja potencia.</p>
+                <div class="chart-container w-full max-w-4xl mx-auto h-80 md:h-96">
+                    <canvas id="marketChart"></canvas>
+                </div>
+                 <p class="text-center text-gray-600 mt-4 font-semibold">Capturar solo el <span class="text-[#f95d6a] font-bold text-xl">1%</span> del mercado de IoT de baja potencia representaría <span class="text-[#f95d6a] font-bold text-xl">$500 millones</span> en ingresos anuales.</p>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">La Ventaja Competitiva de QECP</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">Frente a soluciones genéricas como el Cortex-M0+, QECP ofrece un rendimiento especializado que redefine la eficiencia.</p>
+                <div class="chart-container w-full max-w-4xl mx-auto h-80 md:h-96">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Roadmap hacia la Comercialización</h3>
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-12">
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold text-[#665191]">Fase 1: Prototipo en FPGA (6 Meses)</h4>
+                            <p class="text-gray-600">Validación técnica y primeras pruebas con sensores.</p>
+                            <p class="font-bold text-[#665191]">$150,000</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold text-[#a05195]">Fase 2: Prototipo ASIC (12 Meses)</h4>
+                            <p class="text-gray-600">Fabricación y pruebas de campo con socios estratégicos.</p>
+                            <p class="font-bold text-[#a05195]">$1,000,000</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold text-[#d45087]">Fase 3: Producción en Volumen (18 Meses)</h4>
+                            <p class="text-gray-600">Escalamiento de la producción y expansión a mercados globales.</p>
+                            <p class="font-bold text-[#d45087]">$5,000,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-xl p-8">
+                 <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Solicitud de Inversión Semilla: $150,000</h3>
+                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="text-center md:text-right order-2 md:order-1">
+                        <p class="text-2xl font-bold text-gray-700">Buscamos capital para completar la Fase 1 y validar nuestra tecnología con un prototipo funcional en FPGA.</p>
+                        <p class="text-lg text-gray-500 mt-4">Esta inversión nos permitirá asegurar patentes clave y atraer a nuestros primeros socios comerciales.</p>
+                         <p class="text-4xl font-black text-[#ff7c43] mt-4">20x</p>
+                        <p class="text-xl font-bold text-gray-700">Retorno esperado en 5 años.</p>
+                    </div>
+                    <div class="chart-container w-full max-w-sm h-64 md:h-80 order-1 md:order-2">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact" class="bg-[#003f5c] text-white mt-12">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h3 class="text-4xl font-bold mb-4">Únete a la Revolución del IoT Sostenible</h3>
+            <p class="max-w-2xl mx-auto mb-8">Buscamos inversores estratégicos que compartan nuestra visión de un futuro conectado y energéticamente eficiente. Esta es una oportunidad única para entrar en la fase inicial con equity preferente.</p>
+            <div class="font-semibold">
+                <p>Arnaldo Adrián Ozorio</p>
+                <p>asesor.teducativo@gmail.com</p>
+                <p><a href="https://informaticabigbosspy.blogspot.com/p/principal.html" target="_blank" class="underline hover:text-[#ffa600]">informaticabigbosspy.blogspot.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartColors = ['#d45087', '#a05195', '#665191', '#2f4b7c', '#003f5c'];
+        const chartColorsAlt = ['#f95d6a', '#ff7c43', '#ffa600'];
+
+        const problemCtx = document.getElementById('problemChart').getContext('2d');
+        new Chart(problemCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Mantenimiento Energético', 'Otros Costos'],
+                datasets: [{
+                    data: [60, 40],
+                    backgroundColor: [chartColors[0], '#e0e0e0'],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        new Chart(marketCtx, {
+            type: 'line',
+            data: {
+                labels: ['2022', '2025', '2030'],
+                datasets: [{
+                    label: 'Mercado Global IoT (Trillones USD)',
+                    data: [0.5, 0.8, 1.5],
+                    borderColor: chartColors[1],
+                    backgroundColor: 'rgba(102, 81, 145, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    yAxisID: 'y'
+                }, {
+                    label: 'Dispositivos Low-Power (Billones)',
+                    data: [4, 10, 25],
+                    borderColor: chartColorsAlt[0],
+                    backgroundColor: 'rgba(249, 93, 106, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Trillones USD'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Billones de Unidades'
+                        },
+                        grid: {
+                            drawOnChartArea: false, 
+                        },
+                    },
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+        const rawComparisonLabels = ['Consumo por Operación', 'Procesamiento Paralelo (Ops)', 'Costo en Volumen'];
+        new Chart(comparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: rawComparisonLabels.map(l => wrapLabel(l)),
+                datasets: [{
+                    label: 'QECP',
+                    data: [1, 1024, 0.8], 
+                    backgroundColor: chartColors[2],
+                }, {
+                    label: 'Cortex-M0+',
+                    data: [10, 1, 1],
+                    backgroundColor: '#e0e0e0',
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Métrica Relativa (QECP normalizado)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+        const rawInvestmentLabels = ['Desarrollo Prototipo FPGA', 'Equipamiento y Laboratorio', 'Gastos Operativos y Legales'];
+        new Chart(investmentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: rawInvestmentLabels.map(l => wrapLabel(l)),
+                datasets: [{
+                    label: 'Desglose de Inversión',
+                    data: [80000, 30000, 40000],
+                    backgroundColor: [chartColorsAlt[0], chartColorsAlt[1], chartColorsAlt[2]],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD' }).format(context.parsed);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
