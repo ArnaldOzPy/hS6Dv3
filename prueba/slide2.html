@@ -1,605 +1,92 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<!DOCTYPE html><html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumEdge Co-Processor (QECP) - Presentación</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #665191, #f95d6a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #f95d6a;
-            border: 3px solid #003f5c;
-        }
-        .timeline-line {
-            position: absolute;
-            left: -21px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #003f5c;
-        }
-        @media print {
-            .no-print {
-                display: none;
-            }
-            .print-break-before {
-                page-break-before: always;
-            }
-            .print-break-after {
-                page-break-after: always;
-            }
-            .print-container {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            body {
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            h3 {
-                font-size: 20px;
-            }
-        }
-        .page {
-            min-height: 100vh;
-            padding: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuantumEdge Co-Processor (QECP) - Presentación</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 320px; }
+    .gradient-text { background: linear-gradient(to right, #665191, #f95d6a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    @media print {
+      .no-print { display: none; }
+      .page { page-break-after: always; }
+      body { background: white; font-size: 14px; }
+      h2 { font-size: 24px; }
+      h3 { font-size: 20px; }
+    }
+    .page { min-height: 100vh; padding: 2rem; background: white; margin-bottom: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-    <header class="bg-white shadow-lg sticky top-0 z-50 no-print">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAh1JREFUeNrs3cFtwkAQRFEjB3IhF3IhF3IhF3IhF3IhF3IhF8jIY4M4sN6W0VjS/JFm5T97T9rZzGaz2Ww2m81mM5vNZrPZbDabzWw2m81ms9lsZrPZbDabzWYzm81ms9lsNpvZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabz-WYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZrPZbDabzWY2m81ms9lsZrPZbDabzWYzm81ms9lsNpvNZrPZbDabzWw2m81ms9lsZr极抱歉，由于内容过长，我无法一次性提供完整的代码。但我可以为您提供改进后的HTML代码，并确保它适合转换为PDF。
-
-主要改进包括：
-1. 添加了打印样式，确保PDF转换时布局正确
-2. 将内容组织成更适合PDF页面的结构
-3. 添加了公司logo（使用base64编码占位，您需要替换为实际logo）
-4. 优化了图表和数据可视化
-5. 添加了明确的页面分隔符，便于PDF分页
-
-以下是完整的HTML代码：
-
-```html
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumEdge Co-Processor (QECP) - Presentación</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #665191, #f95d6a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #f95d6a;
-            border: 3px solid #003f5c;
-        }
-        .timeline-line {
-            position: absolute;
-            left: -21px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #003f5c;
-        }
-        @media print {
-            .no-print {
-                display: none;
-            }
-            .print-break-before {
-                page-break-before: always;
-            }
-            .print-break-after {
-                page-break-after: always;
-            }
-            .print-container {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            body {
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            h3 {
-                font-size: 20px;
-            }
-        }
-        .page {
-            min-height: 100vh;
-            padding: 2rem;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 text-gray-800">
-
-    <header class="bg-white shadow-lg sticky top-0 z-50 no-print">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <!-- Aquí va tu logo - reemplaza el src con tu imagen -->
-                <img src="data:image/png;base64,tu_logo_en_base64_aquí" alt="BIG BOSS Informatica" class="h-12 mr-4">
-                <h1 class="text-2xl font-bold text-[#003f5c]">QuantumEdge (QECP)</h1>
-            </div>
-            <a href="#contact" class="bg-[#f95d6a] text-white font-bold py-2 px-4 rounded-full hover:bg-[#d45087] transition-colors">Contáctanos</a>
-        </nav>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8 print-container">
-        
-        <!-- Portada -->
-        <div class="page print-break-after">
-            <section id="intro" class="text-center py-16">
-                <div class="mb-8">
-                    <!-- Logo más grande para la portada -->
-                    <img src="data:image/png;base64,tu_logo_en_base64_aquí" alt="BIG BOSS Informatica" class="h-24 mx-auto mb-6">
-                    <h2 class="text-3xl font-black text-[#003f5c]">BIG BOSS Informatica</h2>
-                </div>
-                <h2 class="text-5xl md:text-7xl font-black mb-4">
-                    <span class="gradient-text">QuantumEdge</span> Co-Processor
-                </h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                    Revolucionando la Eficiencia Energética en IoT con computación de ultra-baja potencia.
-                </p>
-                <div class="mt-12">
-                    <p class="text-lg">Presentación para Inversores</p>
-                    <p class="text-gray-500">Noviembre 2023</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- El Problema -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">El Problema: La Crisis Energética Silenciosa del IoT</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">Los dispositivos IoT están en todas partes, pero su dependencia de baterías limitadas crea un enorme cuello de botella operativo y financiero. El mantenimiento energético no es solo un inconveniente, es el mayor costo oculto de la industria.</p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <div class="chart-container w-full max-w-sm h-64 md:h-80">
-                        <canvas id="problemChart"></canvas>
-                    </div>
-                    <div class="text-center md:text-left">
-                        <p class="text-7xl md:text-8xl font-black text-[#d45087]">60%</p>
-                        <p class="text-2xl font-bold text-gray-700">del costo total de propiedad de un dispositivo IoT se debe al mantenimiento energético.</p>
-                        <p class="text-sm text-gray-500 mt-2">(Fuente: McKinsey)</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- La Solución -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">La Solución: QuantumEdge Co-Processor (QECP)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <p class="text-5xl font-bold text-[#665191]">30%</p>
-                        <p class="font-semibold mt-2">Reducción del consumo energético, extendiendo la vida de la batería de meses a años.</p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <p class="text-5xl font-bold text-[#a05195]">1024</p>
-                        <p class="font-semibold mt-2">Operaciones simultáneas gracias a nuestra arquitectura de matriz 2D de 1-BIT.</p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <p class="text-5xl font-bold text-[#d45087]">Ultra-Low</p>
-                        <p class="font-semibold mt-2">Potencia para tareas simples, liberando al procesador principal y ahorrando energía.</p>
-                    </div>
-                </div>
-                <div class="mt-8 text-center">
-                    <p class="text-lg font-semibold">Tecnología patentada que procesa datos con una eficiencia energética 10x superior a las soluciones actuales</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- Mercado -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">Una Oportunidad de Mercado Explosiva</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">El universo del IoT se está expandiendo a un ritmo sin precedentes. QECP está posicionado para capturar una porción significativa del segmento de más rápido crecimiento: los dispositivos de baja potencia.</p>
-                <div class="chart-container w-full max-w-4xl mx-auto h-80 md:h-96">
-                    <canvas id="marketChart"></canvas>
-                </div>
-                 <p class="text-center text-gray-600 mt-4 font-semibold">Capturar solo el <span class="text-[#f95d6a] font-bold text-xl">1%</span> del mercado de IoT de baja potencia representaría <span class="text-[#f95d6a] font-bold text-xl">$500 millones</span> en ingresos anuales.</p>
-            </section>
-        </div>
-
-        <!-- Ventaja Competitiva -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                <h3 class="text-3xl font-bold text-center mb-2 text-[#003f5c]">La Ventaja Competitiva de QECP</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-4xl mx-auto">Frente a soluciones genéricas como el Cortex-M0+, QECP ofrece un rendimiento especializado que redefine la eficiencia.</p>
-                <div class="chart-container w-full max-w-4xl mx-auto h-80 md:h-96">
-                    <canvas id="comparisonChart"></canvas>
-                </div>
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-[#003f5c]">Aplicaciones Ideales</h4>
-                        <ul class="list-disc pl-5 mt-2">
-                            <li>Dispositivos médicos wearables</li>
-                            <li>Sensores industriales IoT</li>
-                            <li>Agricultura de precisión</li>
-                            <li>Smart cities y smart homes</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-[#003f5c]">Ventajas Clave</h4>
-                        <ul class="list-disc pl-5 mt-2">
-                            <li>Arquitectura especializada para procesamiento eficiente</li>
-                            <li>Diseño modular adaptable a múltiples aplicaciones</li>
-                            <li>Compatibilidad con plataformas existentes</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Roadmap -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Roadmap hacia la Comercialización</h3>
-                <div class="relative max-w-2xl mx-auto">
-                    <div class="timeline-line"></div>
-                    <div class="space-y-12">
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-xl font-bold text-[#665191]">Fase 1: Prototipo en FPGA (6 Meses)</h4>
-                            <p class="text-gray-600">Validación técnica y primeras pruebas con sensores.</p>
-                            <p class="font-bold text-[#665191]">$150,000</p>
-                        </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-xl font-bold text-[#a05195]">Fase 2: Prototipo ASIC (12 Meses)</h4>
-                            <p class="text-gray-600">Fabricación y pruebas de campo con socios estratégicos.</p>
-                            <p class="font-bold text-[#a05195]">$1,000,000</p>
-                        </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-xl font-bold text-[#d45087]">Fase 3: Producción en Volumen (18 Meses)</h4>
-                            <p class="text-gray-600">Escalamiento de la producción y expansión a mercados globales.</p>
-                            <p class="font-bold text-[#d45087]">$5,000,000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 text-center">
-                    <p class="text-lg font-semibold">Plan de Salida: Adquisición por un fabricante de semiconductores en 3-5 años</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- Inversión -->
-        <div class="page print-break-after">
-            <section class="bg-white rounded-lg shadow-xl p-8">
-                 <h3 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Solicitud de Inversión Semilla: $150,000</h3>
-                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <div class="text-center md:text-right order-2 md:order-1">
-                        <p class="text-2xl font-bold text-gray-700">Buscamos capital para completar la Fase 1 y validar nuestra tecnología con un prototipo funcional en FPGA.</p>
-                        <p class="text-lg text-gray-500 mt-4">Esta inversión nos permitirá asegurar patentes clave y atraer a nuestros primeros socios comerciales.</p>
-                         <p class="text-4xl font-black text-[#ff7c43] mt-4">20x</p>
-                        <p class="text-xl font-bold text-gray-700">Retorno esperado en 5 años.</p>
-                    </div>
-                    <div class="chart-container w-full max-w-sm h-64 md:h-80 order-1 md:order-2">
-                        <canvas id="investmentChart"></canvas>
-                    </div>
-                </div>
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-[#003f5c] mb-2">Uso de Fondos</h4>
-                        <ul class="list-disc pl-5">
-                            <li>Desarrollo de prototipo FPGA: $80,000</li>
-                            <li>Equipamiento y laboratorio: $30,000</li>
-                            <li>Gastos operativos y legales: $40,000</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-[#003f5c] mb-2">Equipo</h4>
-                        <ul class="list-disc pl-5">
-                            <li>Arnaldo Adrián Ozorio - CEO & Fundador</li>
-                            <li>Equipo de ingeniería con 10+ años de experiencia en semiconductores</li>
-                            <li>Asesores de la industria con exitosas salidas</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contacto -->
-        <div class="page">
-            <footer id="contact" class="bg-[#003f5c] text-white rounded-lg p-8">
-                <div class="text-center">
-                    <h3 class="text-4xl font-bold mb-4">Únete a la Revolución del IoT Sostenible</h3>
-                    <p class="max-w-2xl mx-auto mb-8">Buscamos inversores estratégicos que compartan nuestra visión de un futuro conectado y energéticamente eficiente. Esta es una oportunidad única para entrar en la fase inicial con equity preferente.</p>
-                    <div class="font-semibold">
-                        <p>Arnaldo Adrián Ozorio</p>
-                        <p>asesor.teducativo@gmail.com</p>
-                        <p><a href="https://informaticabigbosspy.blogspot.com/p/principal.html" target="_blank" class="underline hover:text-[#ffa600]">informaticabigbosspy.blogspot.com</a></p>
-                    </div>
-                    <div class="mt-8">
-                        <p class="text-sm">BIG BOSS Informatica | Servicios</p>
-                        <p class="text-sm">QuantumEdge Co-Processor</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </main>
-
-    <script>
-        // Configuración de gráficos (igual que antes)
-        const wrapLabel = (label, maxWidth = 16) => {
-            if (label.length <= maxWidth) {
-                return label;
-            }
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length > maxWidth) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
-                }
-                currentLine += word + ' ';
-            }
-            lines.push(currentLine.trim());
-            return lines;
-        };
-        
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
-        };
-
-        const chartColors = ['#d45087', '#a05195', '#665191', '#2f4b7c', '#003f5c'];
-        const chartColorsAlt = ['#f95d6a', '#ff7c43', '#ffa600'];
-
-        // Gráfico de problema
-        const problemCtx = document.getElementById('problemChart').getContext('2d');
-        new Chart(problemCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Mantenimiento Energético', 'Otros Costos'],
-                datasets: [{
-                    data: [60, 40],
-                    backgroundColor: [chartColors[0], '#e0e0e0'],
-                    borderColor: '#ffffff',
-                    borderWidth: 4,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: tooltipTitleCallback
-                        }
-                    }
-                }
-            }
-        });
-
-        // Gráfico de mercado
-        const marketCtx = document.getElementById('marketChart').getContext('2d');
-        new Chart(marketCtx, {
-            type: 'line',
-            data: {
-                labels: ['2022', '2025', '2030'],
-                datasets: [{
-                    label: 'Mercado Global IoT (Trillones USD)',
-                    data: [0.5, 0.8, 1.5],
-                    borderColor: chartColors[1],
-                    backgroundColor: 'rgba(102, 81, 145, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    yAxisID: 'y'
-                }, {
-                    label: 'Dispositivos Low-Power (Billones)',
-                    data: [4, 10, 25],
-                    borderColor: chartColorsAlt[0],
-                    backgroundColor: 'rgba(249, 93, 106, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    yAxisID: 'y1'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Trillones USD'
-                        }
-                    },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Billones de Unidades'
-                        },
-                        grid: {
-                            drawOnChartArea: false, 
-                        },
-                    },
-                },
-                plugins: {
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            title: tooltipTitleCallback
-                        }
-                    }
-                }
-            }
-        });
-
-        // Gráfico comparativo
-        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
-        const rawComparisonLabels = ['Consumo por Operación', 'Procesamiento Paralelo (Ops)', 'Costo en Volumen'];
-        new Chart(comparisonCtx, {
-            type: 'bar',
-            data: {
-                labels: rawComparisonLabels.map(l => wrapLabel(l)),
-                datasets: [{
-                    label: 'QECP',
-                    data: [1, 1024, 0.8], 
-                    backgroundColor: chartColors[2],
-                }, {
-                    label: 'Cortex-M0+',
-                    data: [10, 1, 1],
-                    backgroundColor: '#e0e0e0',
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Métrica Relativa (QECP normalizado)'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: tooltipTitleCallback
-                        }
-                    }
-                }
-            }
-        });
-
-        // Gráfico de inversión
-        const investmentCtx = document.getElementById('investmentChart').getContext('2d');
-        const rawInvestmentLabels = ['Desarrollo Prototipo FPGA', 'Equipamiento y Laboratorio', 'Gastos Operativos y Legales'];
-        new Chart(investmentCtx, {
-            type: 'doughnut',
-            data: {
-                labels: rawInvestmentLabels.map(l => wrapLabel(l)),
-                datasets: [{
-                    label: 'Desglose de Inversión',
-                    data: [80000, 30000, 40000],
-                    backgroundColor: [chartColorsAlt[0], chartColorsAlt[1], chartColorsAlt[2]],
-                    borderColor: '#ffffff',
-                    borderWidth: 4,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '60%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            boxWidth: 20
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: tooltipTitleCallback,
-                            label: function(context) {
-                                let label = context.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed !== null) {
-                                    label += new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD' }).format(context.parsed);
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-</body>
+<body class="bg-gray-100 text-gray-800">  <!-- Portada -->  <div class="page flex flex-col justify-center items-center text-center">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" alt="Logo QECP" class="h-24 mb-6">
+    <h1 class="text-5xl font-black gradient-text mb-4">QuantumEdge Co-Processor</h1>
+    <p class="text-xl text-gray-600 mb-6">Revolucionando la eficiencia energética en IoT con computación de ultra-baja potencia</p>
+    <p class="text-lg">Presentación para Inversores – 2025</p>
+  </div>  <!-- Problema -->  <div class="page">
+    <h2 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">El Problema</h2>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+      <div class="chart-container"><canvas id="problemChart"></canvas></div>
+      <div class="text-center md:text-left">
+        <p class="text-6xl font-black text-[#d45087]">60%</p>
+        <p class="text-xl font-semibold">del costo IoT proviene del mantenimiento energético</p>
+      </div>
+    </div>
+  </div>  <!-- Solución -->  <div class="page">
+    <h2 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Nuestra Solución: QECP</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      <div class="bg-gray-50 p-6 rounded-lg shadow"><p class="text-4xl font-bold text-[#665191]">30%</p><p>Menor consumo energético</p></div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow"><p class="text-4xl font-bold text-[#a05195]">1024</p><p>Operaciones simultáneas</p></div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow"><p class="text-2xl font-bold text-[#d45087]">Ultra-Low</p><p>Consumo para IoT</p></div>
+    </div>
+  </div>  <!-- Mercado -->  <div class="page">
+    <h2 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Mercado</h2>
+    <div class="chart-container"><canvas id="marketChart"></canvas></div>
+  </div>  <!-- Ventaja Competitiva -->  <div class="page">
+    <h2 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Ventaja Competitiva</h2>
+    <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
+  </div>  <!-- Inversión -->  <div class="page">
+    <h2 class="text-3xl font-bold text-center mb-6 text-[#003f5c]">Inversión</h2>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+      <div class="chart-container"><canvas id="investmentChart"></canvas></div>
+      <div class="text-center md:text-left">
+        <p class="text-2xl font-bold">Solicitamos $150,000</p>
+        <p class="text-xl">para prototipo en FPGA</p>
+        <p class="text-4xl font-black text-[#ff7c43] mt-4">20x Retorno</p>
+      </div>
+    </div>
+  </div>  <!-- Contacto -->  <div class="page text-center">
+    <h2 class="text-3xl font-bold mb-4 text-[#003f5c]">Contacto</h2>
+    <p class="text-lg">Arnaldo Adrián Ozorio</p>
+    <p>📧 asesor.teducativo@gmail.com</p>
+    <p>🌐 <a href="https://informaticabigbosspy.blogspot.com/p/principal.html" class="underline">informaticabigbosspy</a></p>
+  </div>  <script>
+    const chartColors = ['#d45087', '#a05195', '#665191', '#2f4b7c', '#003f5c'];
+    // Problema
+    new Chart(document.getElementById('problemChart'), {
+      type: 'doughnut',
+      data: { labels: ['Mantenimiento Energético', 'Otros'], datasets: [{ data: [60,40], backgroundColor: [chartColors[0], '#e0e0e0'] }] },
+      options: { cutout: '70%', plugins:{legend:{position:'bottom'}} }
+    });
+    // Mercado
+    new Chart(document.getElementById('marketChart'), {
+      type: 'line',
+      data: { labels:['2022','2025','2030'], datasets:[{label:'Mercado IoT ($T)',data:[0.5,0.8,1.5], borderColor:chartColors[1], fill:true,tension:0.4}]},
+      options:{responsive:true}
+    });
+    // Comparación
+    new Chart(document.getElementById('comparisonChart'), {
+      type:'bar',
+      data:{ labels:['Consumo','Paralelismo','Costo'], datasets:[{label:'QECP',data:[1,1024,0.8],backgroundColor:chartColors[2]},{label:'Cortex-M0+',data:[10,1,1],backgroundColor:'#e0e0e0'}]},
+      options:{ indexAxis:'y', plugins:{legend:{position:'top'}} }
+    });
+    // Inversión
+    new Chart(document.getElementById('investmentChart'), {
+      type:'doughnut',
+      data:{ labels:['FPGA $80k','Lab $30k','Legales $40k'], datasets:[{ data:[80000,30000,40000], backgroundColor:['#f95d6a','#ff7c43','#ffa600'] }]},
+      options:{ cutout:'65%', plugins:{legend:{position:'bottom'}} }
+    });
+  </script></body>
 </html>
