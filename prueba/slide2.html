@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantumEdge Co-Processor (QECP) - Presentación Ejecutiva</title>
+    <title>QuantumEdge Co-Processor (QECP) - Presentación Confidencial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            counter-reset: page;
         }
         .gradient-text {
-            background: linear-gradient(to right, #003f5c, #58508d, #bc5090, #ff6361, #ff8530);
+            background: linear-gradient(to right, #003f5c, #58508d, #bc5090, #ff6361);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradient 3s ease infinite;
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         .page {
             width: 210mm;
@@ -63,17 +57,60 @@
         }
         .page-number:after {
             content: counter(page);
+            counter-increment: page;
+        }
+        .confidential-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 63, 92, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+        }
+        .confidential-box {
+            background: white;
+            color: #003f5c;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .confidential-checkbox {
+            margin: 1rem 0;
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
+    <!-- Overlay de confidencialidad -->
+    <div id="confidentialOverlay" class="confidential-overlay">
+        <div class="confidential-box">
+            <h2 class="text-2xl font-bold mb-4">ACUERDO DE CONFIDENCIALIDAD</h2>
+            <p class="mb-4">La información contenida en este documento es confidencial y propiedad de BIG BOSS Informática & Servicios para ®QuantumEdge Technologies.</p>
+            <p class="mb-4">Al acceder a este documento, usted acepta no divulgar, copiar o distribuir la información aquí contenida sin el consentimiento expreso por escrito.</p>
+            <div class="confidential-checkbox">
+                <label class="flex items-center">
+                    <input type="checkbox" id="agreeCheckbox" class="mr-2">
+                    <span>Acepto los términos de confidencialidad</span>
+                </label>
+            </div>
+            <button id="accessButton" class="bg-[#003f5c] text-white font-bold py-2 px-6 rounded-lg opacity-50 cursor-not-allowed" disabled>
+                Acceder al Documento
+            </button>
+        </div>
+    </div>
+
     <!-- Página 1: Portada -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-24">
         </div>
         
         <div class="flex flex-col items-center justify-center h-full pt-20">
@@ -103,10 +140,9 @@
     <!-- Página 2: El Problema -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">El Problema: Crisis Energética en IoT</h2>
@@ -143,10 +179,9 @@
     <!-- Página 3: La Solución -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">La Solución: QuantumEdge Co-Processor</h2>
@@ -201,10 +236,9 @@
     <!-- Página 4: Mercado -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Oportunidad de Mercado</h2>
@@ -251,10 +285,9 @@
     <!-- Página 5: Ventaja Competitiva -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozV YmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Ventaja Competitiva</h2>
@@ -323,10 +356,9 @@
     <!-- Página 6: Roadmap -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Roadmap de Desarrollo</h2>
@@ -374,10 +406,9 @@
     <!-- Página 7: Inversión -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Oportunidad de Inversión</h2>
@@ -442,10 +473,9 @@
     <!-- Página 8: Equipo y Contacto -->
     <div class="page">
         <div class="logo-container">
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
-                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
-            </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixWL3soddQbLILfLYE6U9n2uw6RMaNCnmYZXwMkrRtxnREmMcfOmGhJO5hvrnP2wo8pJvjCjgTN5xsJz7o_I0FC33vFtoNFLacPFkeMmlUnaMeYSnzbPEGNl72nYZhxJRq5St9ki893jT1wnJPIIC9dng9WxTZcBPVhm6Q14KWmJKYModvUQozVYmMHO8/s400/IMG_20250824_193426.png" 
+                 alt="Logo QECP" 
+                 class="h-16">
         </div>
         
         <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Nuestro Equipo</h2>
@@ -500,23 +530,33 @@
     </div>
 
     <script>
-        // Add page numbering
+        // Acuerdo de confidencialidad
         document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('confidentialOverlay');
+            const checkbox = document.getElementById('agreeCheckbox');
+            const button = document.getElementById('accessButton');
+            
+            checkbox.addEventListener('change', function() {
+                button.disabled = !this.checked;
+                button.classList.toggle('opacity-50', !this.checked);
+                button.classList.toggle('cursor-not-allowed', !this.checked);
+                button.classList.toggle('cursor-pointer', this.checked);
+                button.classList.toggle('hover:bg-[#58508d]', this.checked);
+            });
+            
+            button.addEventListener('click', function() {
+                if (!this.disabled) {
+                    overlay.style.display = 'none';
+                }
+            });
+            
+            // Add page numbering
             const pages = document.querySelectorAll('.page');
             pages.forEach((page, index) => {
                 const pageNumber = page.querySelector('.page-number');
                 if (pageNumber) {
                     pageNumber.textContent = index + 1;
                 }
-            });
-            
-            // Add beforeprint event to adjust layout for printing
-            window.addEventListener('beforeprint', function() {
-                document.body.classList.add('printing');
-            });
-            
-            window.addEventListener('afterprint', function() {
-                document.body.classList.remove('printing');
             });
         });
     </script>
