@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumEdge Co-Processor (QECP) - Presentación Ejecutiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #003f5c, #58508d, #bc5090, #ff6361, #ff8530);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            margin: 10mm auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: white;
+            position: relative;
+        }
+        @media print {
+            body, .page {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+            .page {
+                page-break-after: always;
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+        .logo-container {
+            position: absolute;
+            top: 15mm;
+            right: 15mm;
+            text-align: right;
+        }
+        .footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 15mm;
+            right: 15mm;
+            font-size: 10pt;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 5mm;
+        }
+        .page-number:after {
+            content: counter(page);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Página 1: Portada -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-center justify-center h-full pt-20">
+            <h1 class="text-5xl font-black text-center mb-6 gradient-text">QuantumEdge Co-Processor</h1>
+            <p class="text-2xl text-center text-gray-600 mb-12">Revolucionando la Eficiencia Energética en IoT</p>
+            
+            <div class="bg-gradient-to-r from-[#003f5c] to-[#bc5090] p-1 rounded-full w-3/4 mb-12">
+                <div class="bg-white rounded-full p-4 text-center">
+                    <p class="text-lg font-semibold">Presentación Ejecutiva para Inversores</p>
+                    <p class="text-sm text-gray-500">Noviembre 2023 | Confidencial</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-lg">Arnaldo Adrián Ozorio</p>
+                <p class="text-gray-600">CEO & Fundador</p>
+                <p class="text-sm mt-4">asesor.teducativo@gmail.com</p>
+                <p class="text-sm">(+595) 983 489 859</p>
+            </div>
+        </div>
+        
+        <div class="footer text-center">
+            <p>BIG BOSS Informática & Servicios - ®QuantumEdge Technologies - Esta información es confidencial y sujeta a NDA</p>
+        </div>
+    </div>
+
+    <!-- Página 2: El Problema -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">El Problema: Crisis Energética en IoT</h2>
+        
+        <div class="flex items-center mb-8">
+            <div class="w-1/2 pr-4">
+                <p class="text-lg mb-4">Los dispositivos IoT están en todas partes, pero su dependencia de baterías limitadas crea un enorme cuello de botella operativo y financiero.</p>
+                <p class="text-lg">El mantenimiento energético no es solo un inconveniente, es el mayor costo oculto de la industria.</p>
+            </div>
+            <div class="w-1/2 bg-gray-100 p-6 rounded-lg">
+                <div class="text-center">
+                    <p class="text-[80pt] font-black text-[#ff6361] mb-0 leading-none">60%</p>
+                    <p class="text-lg font-semibold">del costo total de propiedad de un dispositivo IoT se debe al mantenimiento energético.</p>
+                    <p class="text-sm text-gray-500 mt-2">Fuente: McKinsey & Company, 2023</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Desafíos específicos:</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Reemplazo frecuente de baterías en dispositivos remotos</li>
+                <li>Limitaciones para implementar IoT en áreas de difícil acceso</li>
+                <li>Alto costo de mantenimiento para flotas de dispositivos</li>
+                <li>Impacto ambiental por desecho de baterías</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 3: La Solución -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">La Solución: QuantumEdge Co-Processor</h2>
+        
+        <p class="text-lg text-center mb-10">Nuestro QECP es un co-procesador especializado que reduce drásticamente el consumo energético en dispositivos IoT mediante una arquitectura innovadora.</p>
+        
+        <div class="grid grid-cols-3 gap-6 mb-10">
+            <div class="bg-gradient-to-b from-[#003f5c] to-[#58508d] p-1 rounded-xl">
+                <div class="bg-white rounded-xl p-6 text-center h-full">
+                    <p class="text-[36pt] font-black text-[#003f5c] mb-2">30%</p>
+                    <p class="font-semibold">Reducción del consumo energético</p>
+                    <p class="text-sm mt-2">Extiende la vida de la batería de meses a años</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-b from-[#58508d] to-[#bc5090] p-1 rounded-xl">
+                <div class="bg-white rounded-xl p-6 text-center h-full">
+                    <p class="text-[36pt] font-black text-[#58508d] mb-2">1024</p>
+                    <p class="font-semibold">Operaciones simultáneas</p>
+                    <p class="text-sm mt-2">Gracias a nuestra arquitectura de matriz 2D de 1-BIT</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-b from-[#bc5090] to-[#ff6361] p-1 rounded-xl">
+                <div class="bg-white rounded-xl p-6 text-center h-full">
+                    <p class="text-[20pt] font-black text-[#bc5090] mb-2">Ultra-Low Power</p>
+                    <p class="font-semibold">Para tareas simples</p>
+                    <p class="text-sm mt-2">Liberando al procesador principal y ahorrando energía</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Aplicaciones ideales:</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Dispositivos médicos wearables</li>
+                    <li>Sensores industriales IoT</li>
+                </ul>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Agricultura de precisión</li>
+                    <li>Smart cities y smart homes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 4: Mercado -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Oportunidad de Mercado</h2>
+        
+        <div class="flex mb-8">
+            <div class="w-1/2 pr-4">
+                <p class="text-lg mb-4">El universo del IoT se está expandiendo a un ritmo sin precedentes. QECP está posicionado para capturar una porción significativa del segmento de más rápido crecimiento: los dispositivos de baja potencia.</p>
+                
+                <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                    <p class="text-2xl font-black text-[#ff6361]">$1.5 Billones</p>
+                    <p class="text-sm">Mercado global de IoT para 2030</p>
+                    <p class="text-xs text-gray-500">Fuente: McKinsey, 2023</p>
+                </div>
+            </div>
+            <div class="w-1/2 bg-gradient-to-b from-[#003f5c] to-[#58508d] p-1 rounded-xl">
+                <div class="bg-white rounded-xl p-6 text-center h-full flex flex-col justify-center">
+                    <p class="text-[24pt] font-black text-[#003f5c] mb-2">10,000 Millones</p>
+                    <p class="font-semibold">Dispositivos low-power en Latinoamérica para 2025</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-[#003f5c] to-[#ff6361] p-1 rounded-xl mb-8">
+            <div class="bg-white rounded-xl p-6 text-center">
+                <p class="text-xl font-black">Capturar solo el <span class="text-[#ff6361]">1%</span> del mercado de IoT de baja potencia representaría <span class="text-[#ff6361]">$500 millones</span> en ingresos anuales.</p>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Estrategia de entrada al mercado:</h3>
+            <ol class="list-decimal pl-5 space-y-2">
+                <li>Asociaciones con fabricantes de sensores en agrotech</li>
+                <li>Integración con plataformas existentes de smart cities</li>
+                <li>Enfoque inicial en mercados latinoamericanos</li>
+                <li>Expansión a Norteamérica y Europa con clientes de referencia</li>
+            </ol>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 5: Ventaja Competitiva -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Ventaja Competitiva</h2>
+        
+        <p class="text-lg text-center mb-8">Frente a soluciones genéricas como el Cortex-M0+, QECP ofrece un rendimiento especializado que redefine la eficiencia.</p>
+        
+        <div class="flex mb-8">
+            <div class="w-1/2 pr-4">
+                <div class="bg-gray-100 p-6 rounded-lg h-full">
+                    <h3 class="text-xl font-semibold text-[#003f5c] mb-4 text-center">QuantumEdge QECP</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="bg-[#003f5c] text-white rounded-full p-1 mr-2">✓</span>
+                            <span>30-40% menor consumo energético</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#003f5c] text-white rounded-full p-1 mr-2">✓</span>
+                            <span>Hasta 1024 operaciones en paralelo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#003f5c] text-white rounded-full p-1 mr-2">✓</span>
+                            <span>30% más económico en volumen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#003f5c] text-white rounded-full p-1 mr-2">✓</span>
+                            <span>Arquitectura especializada para IoT</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-1/2 pl-4">
+                <div class="bg-gray-100 p-6 rounded-lg h-full">
+                    <h3 class="text-xl font-semibold text-[#ff6361] mb-4 text-center">Soluciones Convencionales</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="bg-[#ff6361] text-white rounded-full p-1 mr-2">✗</span>
+                            <span>Alto consumo energético</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#ff6361] text-white rounded-full p-1 mr-2">✗</span>
+                            <span>Capacidad limitada de procesamiento paralelo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#ff6361] text-white rounded-full p-1 mr-2">✗</span>
+                            <span>Mayor costo en volumen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[#ff6361] text-white rounded-full p-1 mr-2">✗</span>
+                            <span>Arquitectura de propósito general</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Propiedad Intelectual:</h3>
+            <p>Hemos desarrollado una arquitectura innovadora con potencial de patente que nos proporciona una ventaja sostenible frente a la competencia.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 6: Roadmap -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Roadmap de Desarrollo</h2>
+        
+        <div class="relative mb-10">
+            <div class="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-[#003f5c] via-[#58508d] to-[#ff6361]"></div>
+            
+            <div class="relative pl-16 mb-8">
+                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#003f5c] border-4 border-white"></div>
+                <h3 class="text-xl font-bold text-[#003f5c]">Fase 1: Prototipo en FPGA (6 Meses)</h3>
+                <p class="text-gray-600">Validación técnica y primeras pruebas con sensores</p>
+                <p class="font-bold text-[#003f5c]">Presupuesto: $150,000 USD</p>
+            </div>
+            
+            <div class="relative pl-16 mb-8">
+                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#58508d] border-4 border-white"></div>
+                <h3 class="text-xl font-bold text-[#58508d]">Fase 2: Prototipo ASIC (12 Meses)</h3>
+                <p class="text-gray-600">Fabricación y pruebas de campo con socios estratégicos</p>
+                <p class="font-bold text-[#58508d]">Presupuesto: $1,000,000 USD</p>
+            </div>
+            
+            <div class="relative pl-16">
+                <div class="absolute left-0 top-2 w-8 h-8 rounded-full bg-[#ff6361] border-4 border-white"></div>
+                <h3 class="text-xl font-bold text-[#ff6361]">Fase 3: Producción en Volumen (18 Meses)</h3>
+                <p class="text-gray-600">Escalamiento de la producción y expansión a mercados globales</p>
+                <p class="font-bold text-[#ff6361]">Presupuesto: $5,000,000 USD</p>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Hitos Clave:</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>Q4 2025: Prototipo funcional en FPGA</li>
+                <li>Q1 2026: Primer piloto con cliente agrotech</li>
+                <li>Q3 2026: Producción inicial de ASIC</li>
+                <li>Q4 2026: Primera ronda de expansión internacional</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 7: Inversión -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Oportunidad de Inversión</h2>
+        
+        <div class="bg-gradient-to-r from-[#003f5c] to-[#bc5090] p-1 rounded-xl mb-8">
+            <div class="bg-white rounded-xl p-6 text-center">
+                <p class="text-3xl font-black text-[#003f5c]">$150,000 USD</p>
+                <p class="text-xl font-semibold">Solicitud de Inversión Semilla</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-100 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-[#003f5c] mb-4">Detalles de la Ronda</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between">
+                        <span class="font-medium">Valuación pre-money:</span>
+                        <span class="font-bold">$850,000 USD</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="font-medium">Equity ofrecido:</span>
+                        <span class="font-bold">15%</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="font-medium">ROI proyectado:</span>
+                        <span class="font-bold">8-10x en 3 años</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-100 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-[#003f5c] mb-4">Uso de Fondos</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between">
+                        <span class="font-medium">Desarrollo FPGA:</span>
+                        <span class="font-bold">$80,000</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="font-medium">Equipamiento:</span>
+                        <span class="font-bold">$30,000</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="font-medium">Gastos operativos:</span>
+                        <span class="font-bold">$40,000</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-[#ff6361] to-[#ff8530] p-1 rounded-xl mb-8">
+            <div class="bg-white rounded-xl p-6 text-center">
+                <p class="text-3xl font-black text-[#ff6361]">20x</p>
+                <p class="text-xl font-semibold">Retorno esperado en 5 años</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <!-- Página 8: Equipo y Contacto -->
+    <div class="page">
+        <div class="logo-container">
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-[#003f5c]">BIG BOSS</h2>
+                <p class="text-sm text-[#58508d]">Informática & Servicios</p>
+            </div>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-[#003f5c] mb-6 text-center">Nuestro Equipo</h2>
+        
+        <div class="mb-8">
+            <div class="bg-gray-100 p-6 rounded-lg mb-4">
+                <h3 class="text-xl font-semibold text-[#003f5c]">Arnaldo Adrián Ozorio</h3>
+                <p class="text-lg text-[#58508d]">CEO & Fundador</p>
+                <p class="mt-2">Visión estratégica y gestión con más de 10 años de experiencia en tecnología e innovación.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h4 class="font-semibold text-[#003f5c]">Equipo Técnico</h4>
+                    <p class="text-sm">Ingenieros especializados en diseño ASIC/FPGA y desarrollo IoT</p>
+                </div>
+                
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h4 class="font-semibold text-[#003f5c]">Advisory Board</h4>
+                    <p class="text-sm">Expertos en chips (ex-Intel), IoT (Universidad de São Paulo) y agrotech (ex-Monsanto)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-[#003f5c] to-[#58508d] p-1 rounded-xl mb-8">
+            <div class="bg-white rounded-xl p-6 text-center">
+                <h3 class="text-2xl font-bold text-[#003f5c] mb-4">Únete a la Revolución del IoT Sostenible</h3>
+                <p class="mb-4">Buscamos inversores estratégicos que compartan nuestra visión de un futuro conectado y energéticamente eficiente.</p>
+                <p class="font-semibold">Esta es una oportunidad única para entrar en la fase inicial con equity preferente.</p>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-[#58508d] mb-4">Contacto:</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <p class="font-medium">Arnaldo Adrián Ozorio</p>
+                    <p class="text-sm">CEO & Fundador</p>
+                    <p class="text-sm">asesor.teducativo@gmail.com</p>
+                </div>
+                <div>
+                    <p class="font-medium">Información de Contacto</p>
+                    <p class="text-sm">(+595) 983 489 859</p>
+                    <p class="text-sm">informaticabigbosspy.blogspot.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Página <span class="page-number"></span> - BIG BOSS Informática & Servicios - ®QuantumEdge Technologies</p>
+        </div>
+    </div>
+
+    <script>
+        // Add page numbering
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((page, index) => {
+                const pageNumber = page.querySelector('.page-number');
+                if (pageNumber) {
+                    pageNumber.textContent = index + 1;
+                }
+            });
+            
+            // Add beforeprint event to adjust layout for printing
+            window.addEventListener('beforeprint', function() {
+                document.body.classList.add('printing');
+            });
+            
+            window.addEventListener('afterprint', function() {
+                document.body.classList.remove('printing');
+            });
+        });
+    </script>
+</body>
+</html>
